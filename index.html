@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keerthivasagan M - BCA Student & Web Developer">
+  <title>My Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #004ac6;
+      --dark-gray: #191c1e;
+      --light-gray: #f7f9fb;
+      --light-bg: #f2f4f6;
+      --border-gray: #c3c6d7;
+      --text-gray: #434655;
+      --placeholder-gray: #737686;
+      --light-border: rgba(226, 232, 240, 0.8);
+      --success-green: #10b981;
+      --error-red: #ef4444;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: white;
+    }
+
+    /* ===== HEADER / NAVIGATION ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 249, 251, 0.8);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(195, 198, 215, 0.1);
+    }
+
+    .header-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--dark-gray);
+      letter-spacing: -0.2px;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .header-links a {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .header-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .header-links .active {
+      color: var(--primary-blue);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary-blue);
+      padding-bottom: 2px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(0, 74, 198, 0.1);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: linear-gradient(90deg, var(--light-gray) 0%, var(--light-gray) 100%), linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 128px 40px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 50%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(20px);
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--dark-gray);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      letter-spacing: -1.92px;
+    }
+
+    .hero-text .subtitle {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 24px;
+      letter-spacing: -0.64px;
+    }
+
+    .hero-text .description {
+      font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 48px;
+      line-height: 1.75;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 48px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: var(--primary-blue);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-blue);
+      border: 2px solid var(--placeholder-gray);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-pic {
+      width: 192px;
+      height: 192px;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-glow {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      background: rgba(0, 74, 198, 0.1);
+      border-radius: 50%;
+      filter: blur(20px);
+      z-index: 1;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section.about {
+      background: white;
+    }
+
+    .section.skills {
+      background: white;
+    }
+
+    .section.education {
+      background: var(--light-bg);
+    }
+
+    .section.projects {
+      background: white;
+    }
+
+    .section.certifications {
+      background: white;
+    }
+
+    .section.resume {
+      background: var(--primary-blue);
+    }
+
+    .section.testimonials {
+      background: var(--light-bg);
+    }
+
+    .section.faq {
+      background: white;
+    }
+
+    .section.contact {
+      background: rgba(230, 232, 234, 0.3);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-gray);
+      text-align: center;
+      margin-bottom: 48px;
+      letter-spacing: -0.64px;
+      position: relative;
+      padding-left: 60px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 4px;
+      background: var(--primary-blue);
+      border-radius: 9999px;
+    }
+
+    .section-title.center::before {
+      display: none;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-gray);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      background: rgba(0, 74, 198, 0.05);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-gray);
+      margin-bottom: 24px;
+      letter-spacing: -0.64px;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+    /* ===== SKILLS SECTION ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .skill-card {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--light-border);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.2px;
+    }
+
+    .skill-card h3 img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .skill-tag {
+      background: #e6e8ea;
+      color: var(--dark-gray);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.7px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ===== EDUCATION SECTION ===== */
+    .education-timeline {
+      max-width: 672px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #c3c6d7;
+      transform: translateX(-50%);
+    }
+
+    .timeline-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .timeline-entry:nth-child(even) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .timeline-entry:nth-child(even) .timeline-content {
+      grid-column: 1;
+      text-align: right;
+    }
+
+    .timeline-entry:nth-child(even) .timeline-date {
+      grid-column: 2;
+      text-align: left;
+    }
+
+    .timeline-entry:nth-child(odd) .timeline-date {
+      grid-column: 1;
+      text-align: right;
+    }
+
+    .timeline-entry:nth-child(odd) .timeline-content {
+      grid-column: 2;
+      text-align: left;
+      padding-left: 24px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 87px;
+      width: 16px;
+      height: 16px;
+      background: var(--primary-blue);
+      border: 4px solid white;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .timeline-date {
+      font-size: 14px;
+      color: var(--primary-blue);
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.7px;
+      padding: 4.5px 0;
+    }
+
+    .timeline-content {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--light-border);
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .timeline-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .timeline-content .degree {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content .location {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 12px;
+    }
+
+    .timeline-score {
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary-blue);
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    /* ===== PROJECTS SECTION ===== */
+    .empty-state {
+      text-align: center;
+      max-width: 448px;
+      margin: 0 auto;
+    }
+
+    .empty-state-image {
+      width: 256px;
+      height: 256px;
+      margin: 0 auto 24px;
+      opacity: 0.7;
+    }
+
+    .empty-state h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .empty-state p {
+      font-size: 16px;
+      color: var(--text-gray);
+    }
+
+    /* ===== CERTIFICATIONS SECTION ===== */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      border: 1px solid #c3c6d7;
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      gap: 24px;
+    }
+
+    .cert-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 74, 198, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cert-icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .cert-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      margin-bottom: 4px;
+      letter-spacing: -0.2px;
+    }
+
+    .cert-content .grade {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 4px;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #737686;
+      margin-top: 8px;
+    }
+
+    .cert-distinction {
+      background: #ffdbcd;
+      color: #943700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services-card {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid rgba(0, 74, 198, 0.2);
+      border-radius: 16px;
+      padding: 50px;
+      text-align: center;
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    .services-card img {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 15px;
+    }
+
+    .services-card h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-gray);
+      margin-bottom: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    .services-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin: 16px 0;
+      letter-spacing: -0.2px;
+    }
+
+    .services-card p {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    /* ===== RESUME SECTION ===== */
+    .resume-section {
+      color: white;
+      text-align: center;
+    }
+
+    .resume-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.64px;
+    }
+
+    .resume-section p {
+      opacity: 0.9;
+      max-width: 672px;
+      margin: 0 auto 24px;
+      font-size: 16px;
+    }
+
+    .btn-resume {
+      background: white;
+      color: var(--primary-blue);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 24px 80px;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-resume:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ===== TESTIMONIALS SECTION ===== */
+    .testimonials-card {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px dashed #c3c6d7;
+      border-radius: 16px;
+      padding: 50px;
+      text-align: center;
+      max-width: 512px;
+      margin: 0 auto;
+    }
+
+    .testimonials-card p {
+      font-style: italic;
+      color: var(--text-gray);
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+
+    .btn-testimonial {
+      border: 1px solid var(--primary-blue);
+      color: var(--primary-blue);
+      padding: 13px 25px;
+      background: white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .btn-testimonial:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    /* ===== FAQ SECTION ===== */
+    .faq-container {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--light-border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      letter-spacing: -0.2px;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: rgba(0, 74, 198, 0.02);
+    }
+
+    .faq-toggle {
+      font-size: 12px;
+      width: 12px;
+      height: 7.4px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer-content {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(195, 198, 215, 0.3);
+      color: var(--text-gray);
+      font-size: 16px;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .contact-info h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-gray);
+      margin-bottom: 24px;
+      letter-spacing: -0.64px;
+      line-height: 1.2;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: var(--placeholder-gray);
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .contact-value {
+      font-size: 16px;
+      color: var(--dark-gray);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--placeholder-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--placeholder-gray);
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    .social-link img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-card {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--light-border);
+      border-radius: 16px;
+      padding: 49px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-gray);
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 13px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px 13px;
+      background: #f7f9fb;
+      border: 1px solid #c3c6d7;
+      border-radius: 12px;
+      font-size: 16px;
+      color: var(--dark-gray);
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      background: white;
+    }
+
+    .form-control::placeholder {
+      color: #c3c6d7;
+    }
+
+    textarea.form-control {
+      resize: none;
+      min-height: 120px;
+      padding: 13px 13px 85px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s;
+    }
+
+    .form-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      display: none;
+      font-size: 14px;
+    }
+
+    .form-message.success {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid #10b981;
+      display: block;
+    }
+
+    .form-message.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+      border: 1px solid #ef4444;
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--light-bg);
+      padding: 38px 30px;
+      border-top: 1px solid rgba(195, 198, 215, 0.2);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      letter-spacing: -0.2px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .footer-copyright {
+      font-size: 16px;
+      color: var(--text-gray);
+      opacity: 0.8;
+    }
+
+/* ===== TABLET (768px and below) ===== */
+@media (max-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-nav {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .header-logo {
+    font-size: 18px;
+  }
+
+  .header-links {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 60px 16px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .hero-text .subtitle {
+    font-size: 20px;
+  }
+
+  .hero-text .description {
+    font-size: 16px;
+  }
+
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+  }
+
+  .profile-glow {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-grid,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 50px 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    padding-left: 0;
+    margin-bottom: 32px;
+  }
+
+  .section-title::before {
+    display: none;
+  }
+
+  .certification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 32px 20px;
+  }
+
+  .price-amount {
+    font-size: 40px;
+  }
+
+  .payment-options {
+    flex-direction: column;
+  }
+
+  .payment-options .btn {
+    width: 100%;
+  }
+}
+
+/* ===== SMALL MOBILE (480px and below) ===== */
+@media (max-width: 480px) {
+  .header-nav {
+    padding: 0 12px;
+    height: 56px;
+  }
+
+  .header-logo {
+    font-size: 16px;
+  }
+
+  .header-links {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .header-links a {
+    padding: 4px 8px;
+  }
+
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero-text .subtitle {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .hero-text .description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 13px;
+    justify-content: center;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-glow {
+    width: 160px;
+    height: 160px;
+  }
+
+  .section {
+    padding: 40px 12px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+  }
+
+  .skill-card {
+    padding: 16px;
+  }
+
+  .skill-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .skill-tags {
+    gap: 4px;
+  }
+
+  .skill-tag {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+
+  .about-text h2,
+  .contact-info h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .about-text p,
+  .contact-info p {
+    font-size: 14px;
+  }
+
+  .contact-item {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-control {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  textarea.form-control {
+    min-height: 100px;
+  }
+
+  .form-submit {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .contact-form-card {
+    padding: 16px;
+  }
+
+  .cert-card {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .cert-content h3 {
+    font-size: 16px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .modal-content h2 {
+    font-size: 22px;
+  }
+
+  .modal-subtitle {
+    font-size: 12px;
+  }
+
+  .price-amount {
+    font-size: 32px;
+  }
+
+  .price-label {
+    font-size: 12px;
+  }
+
+  .payment-details {
+    padding: 16px;
+  }
+
+  .payment-item {
+    font-size: 14px;
+  }
+
+  .payment-options {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .payment-options .btn {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .footer {
+    padding: 32px 12px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+  }
+
+  .faq-question {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .faq-answer-content {
+    padding: 0 16px 16px;
+    font-size: 14px;
+  }
+
+  .testimonials-card {
+    padding: 24px;
+  }
+
+  .testimonials-card p {
+    font-size: 14px;
+  }
+}
+
+/* ===== VERY SMALL MOBILE (320px and below) ===== */
+@media (max-width: 320px) {
+  .hero-text h1 {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+}
+    body.dark {
+    --text-primary: #ffffff;
+    --dark-gray: #ffffff;
+    --text-gray: #d1d5db;
+    background: #0f172a;
+    color: var(--text-primary);
+}
+
+body.dark .header {
+  background: #1a1a1a;
+}
+
+body.dark .hero,
+body.dark .section,
+body.dark .footer {
+  background: #121212;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark a {
+  color: white;
+}
+/* ===== PRICING SECTION ===== */
+.pricing-section {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.price-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  background: rgba(0, 74, 198, 0.05);
+  border-radius: 12px;
+  border: 2px solid rgba(0, 74, 198, 0.1);
+}
+
+.price-label {
+  font-size: 14px;
+  color: var(--placeholder-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.price-amount {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-blue);
+  letter-spacing: -1px;
+}
+
+.price-desc {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.payment-options {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== MODAL STYLING ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s;
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: slideUp 0.3s;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-gray);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.modal-close:hover {
+  color: var(--primary-blue);
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin-bottom: 8px;
+  letter-spacing: -0.56px;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 24px;
+}
+
+.payment-details {
+  background: var(--light-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: var(--text-gray);
+  margin-bottom: 12px;
+}
+
+.payment-item span:last-child {
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.payment-divider {
+  height: 1px;
+  background: var(--border-gray);
+  margin: 12px 0;
+}
+
+.payment-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
+.payment-total span:last-child {
+  color: var(--primary-blue);
+  font-size: 24px;
+}
+
+#paymentForm .form-group {
+  margin-bottom: 16px;
+}
+
+#paymentForm .form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 8px;
+  letter-spacing: 0.7px;
+}
+
+#paymentForm .form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+#paymentForm .form-control:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.payment-secure {
+  font-size: 12px;
+  color: var(--placeholder-gray);
+  text-align: center;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 24px;
+  }
+
+  .price-amount {
+    font-size: 36px;
+  }
+
+  .payment-options {
+    flex-direction: column;
+  }
+
+  .payment-options .btn {
+    width: 100%;
+  }
+}
+/* ===== FAQ QUESTION BOX DARK & LIGHT ===== */
+body.dark .faq-item {
+    backdrop-filter: none;
+    background: #000000;
+    border: 1px solid #333;
+}
+  </style>
+</head>
+<body>
+
+<!-- HEADER / NAVIGATION -->
+<header class="header">
+  <div class="header-nav">
+    <div class="header-logo">Keerthivasagan M</div>
+    <nav class="header-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle">🌙</button>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Hi, I'm Keerthivasagan M</h1>
+      <p class="subtitle">BCA Student | Aspiring Web Developer</p>
+      <p class="description"> Passionate Web Developer | Learning, Building, and Growing Through Real-World Projects.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToSection('resume')">📄 View Resume</button>
+        <button class="btn btn-secondary" onclick="scrollToSection('contact')">✉️ Contact Me</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="profile-glow"></div>
+      <img src="images/keerthi.jpeg" alt="Keerthivasagan M" class="profile-pic">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="section about">
+  <div class="section-container">
+    <h2 class="section-title center">About Me</h2>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src ="images/good.png" style = "width: 100%; height: 100%;" alt="Websites" >
+      </div>
+      <div class="about-text">
+        <p>I am a passionate BCA student currently in my 5th semester at SASTRA Deemed to be University. I enjoy learning new technologies, improving my programming skills, and building responsive websites that combine clean design with functionality.</p>
+        <p>I value consistency, attention to detail, and continuous learning. I'm currently strengthening my knowledge of HTML, CSS, JavaScript, and other web technologies while expanding my understanding of programming languages.</p>
+        <p>My objective is to keep learning, gain practical experience, and build a strong foundation that will help me grow into a skilled web developer and contribute effectively to future development teams.</p>
+        <p>I am committed to continuously improving my technical skills through hands-on practice and self-learning. I embrace every opportunity to expand my knowledge, refine my coding abilities, and stay curious about emerging technologies. </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="section skills">
+  <div class="section-container">
+    <h2 class="section-title center">My Technical Skills</h2>
+    <p class="section-subtitle">The tools and technologies I use to bring ideas to life.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>📝 Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🌐 Web Dev</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🎨 Design & Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+		 <!-- EDUCATION SECTION -->
+<section id="education" class="section education">
+  <div class="section-container">
+    <h2 class="section-title center">Education Journey</h2>
+
+    <div class="education-timeline">
+      <div class="timeline-line"></div>
+
+      <!-- College -->
+      <div class="timeline-entry">
+        <div class="timeline-date">2024 – 2027</div>
+
+        <div class="timeline-content">
+          <h3>SASTRA Deemed to be University</h3>
+          <div class="degree">Bachelor of Computer Applications (BCA)</div>
+          <div class="location">Kumbakonam</div>
+          <div class="timeline-score">CGPA / Score: 8.8431</div>
+        </div>
+
+        <div class="timeline-dot"></div>
+      </div>
+
+      <!-- Higher Secondary -->
+      <div class="timeline-entry">
+        <div class="timeline-date">2023 – 2024</div>
+        <div class="timeline-content" style="text-align: right;">
+          <h3>Sri Matha Matriculation School</h3>
+          <div class="degree">Higher Secondary (HSC)</div>
+          <div class="location">Kumbakonam</div>
+          <div class="timeline-score">Score: 85.5%</div>
+        </div>
+
+        <div class="timeline-dot"></div>
+      </div>
+
+      <!-- Secondary School -->
+      <div class="timeline-entry">
+        <div class="timeline-date">2021 – 2022</div>
+
+        <div class="timeline-content">
+          <h3>Sri Matha Matriculation School</h3>
+          <div class="degree">Secondary School (SSLC)</div>
+          <div class="location">Kumbakonam</div>
+          <div class="timeline-score">Score: 75.4%</div>
+        </div>
+
+        <div class="timeline-dot"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="section projects">
+  <div class="section-container">
+    <h2 class="section-title center">Featured Projects</h2>
+    <div class="empty-state">
+      <div class="empty-state-image">
+        <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect fill="#f0f0f0" width="256" height="256"/>
+          <path d="M128 80V176M80 128H176" stroke="#999" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Project showcase is on its way</h3>
+      <p>I'm currently polishing some exciting web applications. Check back soon to see my latest work!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS SECTION -->
+<section id="certifications" class="section certifications">
+  <div class="section-container">
+    <h2 class="section-title center">Certifications</h2>
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-content">
+          <h3>Typewriting English</h3>
+          <div class="grade">Junior Grade</div>
+          <div class="cert-distinction">First Class</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⭐</div>
+        <div class="cert-content">
+          <h3>Typewriting English</h3>
+          <div class="grade">Senior Grade</div>
+          <span class="cert-distinction">First Class With Distinction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="section">
+  <div class="services-card">
+    <h2> Services</h2>
+    <h3>Personal Portfolio Website Design</h3>
+    <p>I help students and professionals establish their digital presence with custom-built, modern, and performance portfolio websites that showcase their skills and achievements effectively.</p>
+    <div class="pricing-section">
+      <div class="price-display">
+        <span class="price-label">Starting at</span>
+        <span class="price-amount">₹5,999</span>
+        <span class="price-desc">One-time payment</span>
+      </div>
+      
+      <div class="payment-options">
+        <button class="btn btn-primary" onclick="openPaymentModal()">💳 Pay Now</button>
+        <button class="btn btn-secondary" onclick="openContactForm()">📧 Discuss Price</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+    
+    <h2>Complete Your Payment</h2>
+    <p class="modal-subtitle">Secure payment for Website Design Service</p>
+    
+    <div class="payment-details">
+      <div class="payment-item">
+        <span>Website Design Package</span>
+        <span>₹5,999</span>
+      </div>
+      <div class="payment-divider"></div>
+      <div class="payment-total">
+        <span>Total Amount</span>
+        <span class="total-amount">₹5,999</span>
+      </div>
+    </div>
+    
+<form id="paymentForm">
+  <div class="form-group">
+    <label for="payName">Full Name *</label>
+    <input type="text" id="payName" class="form-control" placeholder="Your full name" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="payEmail">Email Address *</label>
+    <input type="email" id="payEmail" class="form-control" placeholder="your-email@example.com" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="payPhone">Phone Number *</label>
+    <input type="tel" id="payPhone" class="form-control" placeholder="+91 10-digit number" required>
+  </div>
+  
+  <button type="button" class="btn btn-primary" style="width: 100%;" onclick="handlePaymentUPI()">
+    <span>📱</span>
+    <span>Pay via UPI</span>
+  </button>
+  
+  <p class="payment-secure">✓ Fast & Secure UPI Payment </p>
+</form>
+  </div>
+</div>
+
+<!-- RESUME SECTION -->
+<section id="resume" class="section resume">
+  <div class="section-container resume-section">
+    <h2>Ready to see my full journey?</h2>
+    <p>Download my comprehensive resume to learn more about my academic background, projects, and technical proficiencies.</p>
+    <button class="btn btn-resume" onclick="window.open('https://drive.google.com/file/d/1R-ikCdilq9b57h-YT001FZEFXz9_NVOP/view?usp=drive_link', '_blank')">📥 View Resume</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="section testimonials">
+  <div class="section-container">
+    <h2 class="section-title center">Testimonials</h2>
+    <div class="testimonials-card">
+      <p>"No testimonials yet. Be the first to share your experience!"</p>
+      <button class="btn btn-testimonial" onclick="openContactForm()">Start Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section faq">
+  <div class="section-container">
+    <h2 class="section-title center">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item open">
+        <button class="faq-question">
+          What services do you offer?
+          <span class="faq-toggle">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            I specialize in building custom personal portfolio websites, landing pages, and responsive front-end development using modern technologies like HTML, CSS, and JavaScript.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What tools do you use for development?
+          <span class="faq-toggle">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            I primarily use VS Code, Git for version control, HTML, CSS &  JavaScript for modern frameworks. I'm also proficient with design tools like Figma for UI/UX prototyping.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Are you available for freelance projects?
+          <span class="faq-toggle">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! I'm open to freelance projects and collaborations. Feel free to reach out through the contact form below with details about your project.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is your tech stack?
+          <span class="faq-toggle">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            My current tech stack includes HTML5, CSS3, JavaScript, Git, VS Code, and Figma. I'm continuously learning and adopting new technologies.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How can I contact you?
+          <span class="faq-toggle">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can reach me through the contact form on this page, via email at murugadossm52@gmail.com, or call me at +91 94883 00668. I'll get back to you as soon as possible.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="section contact">
+  <div class="section-container">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Let's build something amazing together.</h2>
+        <p>Have a question or a project in mind? Reach out and I'll get back to you as soon as possible.</p>
+        
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email me</div>
+            <div class="contact-value">murugadossm52@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Call me</div>
+            <div class="contact-value">+91 94883 00668</div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/keerthivasagan-m?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link" title="LinkedIn"><img src="images/inn.png"></a>
+          <a href="https://www.instagram.com/_.vasagan?igsh=MWllYWJhMXBncmMxMg==" class="social-link" title="Instagram"><img src ="images/ig.png"></a>
+          <a href="https://www.github.com/keerthivasagan03" class="social-link" title="GitHub"><img src ="images/gh.png"></a>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Message Here" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            <span>📤</span>
+            <span>Send Message</span>
+          </button>
+
+          <div class="form-message" id="formMessage"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">Keerthivasagan M</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copyright">© 2026 Keerthivasagan M. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// ===== FORM SUBMISSION HANDLER =====
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUE13b-JbtAVspoxBRwhkWkDVqIMibVS4br9ONdd8lLTO3M310qNnoRw05iSSTl2AB/exec';
+
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+const formSubmitBtn = contactForm.querySelector('.form-submit');
+
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get form values
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  // Validate
+  if (!name || !email || !message) {
+    showError('Please fill in all fields.');
+    return;
+  }
+
+  // Build URL with URLSearchParams
+  const url = SCRIPT_URL + '?' + new URLSearchParams({
+    name: name,
+    email: email,
+    message: message
+  });
+
+  // Disable submit button
+  formSubmitBtn.disabled = true;
+  formSubmitBtn.innerHTML = '<span>⏳</span><span>Sending...</span>';
+
+  // Fetch with no-cors mode
+  fetch(url, {
+    method: 'GET',
+    mode: 'no-cors'
+  })
+  .then(() => {
+    showSuccess();
+    contactForm.reset();
+    formSubmitBtn.disabled = false;
+    formSubmitBtn.innerHTML = '<span>📤</span><span>Send Message</span>';
+  })
+  .catch(() => {
+    showError();
+    formSubmitBtn.disabled = false;
+    formSubmitBtn.innerHTML = '<span>📤</span><span>Send Message</span>';
+  });
+});
+
+function showSuccess() {
+  formMessage.textContent = 'Message sent successfully! I shall get back to you soon.';
+  formMessage.className = 'form-message success';
+  setTimeout(() => {
+    formMessage.classList.remove('success');
+  }, 5000);
+}
+
+function showError() {
+  formMessage.textContent = 'Error sending message. Please try again.';
+  formMessage.className = 'form-message error';
+  setTimeout(() => {
+    formMessage.classList.remove('error');
+  }, 5000);
+}
+
+// ===== FAQ ACCORDION =====
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+  question.addEventListener('click', function() {
+    const faqItem = this.parentElement;
+    faqItem.classList.toggle('open');
+  });
+});
+
+// ===== SMOOTH SCROLL NAVIGATION =====
+const navLinks = document.querySelectorAll('.header-links a');
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// ===== RESPONSIVE HEADER ACTIVE STATE =====
+window.addEventListener('scroll', () => {
+  let current = '';
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+const themeBtn = document.querySelector(".theme-toggle");
+
+themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    themeBtn.textContent =
+        document.body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
+// ===== PAYMENT MODAL FUNCTIONS =====
+function openPaymentModal() {
+  document.getElementById('paymentModal').classList.add('show');
+}
+
+function closePaymentModal() {
+  document.getElementById('paymentModal').classList.remove('show');
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('paymentModal');
+  if (event.target === modal) {
+    modal.classList.remove('show');
+  }
+}
+
+function handlePaymentUPI() {
+  const name = document.getElementById('payName').value.trim();
+  const email = document.getElementById('payEmail').value.trim();
+  const phone = document.getElementById('payPhone').value.trim();
+
+  if (!name || !email || !phone) {
+    showPaymentError('Please fill in all fields', 'MISSING_FIELDS');
+    return;
+  }
+
+  // ✅ Send payment data to Google Sheets
+  sendPaymentToSheet(name, email, phone);
+
+  const upiID = 'murugadossm52-1@oksbi';
+  const amount = '5999';
+  const transactionRef = 'PortfolioDesign_' + Date.now();
+  const description = 'Personal Portfolio Website Design';
+
+  const upiLink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&tr=${transactionRef}&tn=${encodeURIComponent(description)}`;
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    window.location.href = upiLink;
+    setTimeout(() => {
+      closePaymentModal();
+      alert('Opening your UPI app. Please complete the payment.');
+      document.getElementById('paymentForm').reset();
+    }, 500);
+  } else {
+    alert(`📱 Open on Mobile\n\nUPI ID: ${upiID}\nAmount: ₹${amount }`);
+    document.getElementById('paymentForm').reset();
+  }
+}
+
+// ✅ NEW FUNCTION: Send payment data to Google Sheets
+function sendPaymentToSheet(name, email, phone) {
+  const PAYMENT_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHwbsnGS39BKhxSMXUI4HY06onp5gB-TUgS7qe5RJJw3A_P54iOFBNMthv60CcWtp_/exec'; // ⬅️ Replace YOUR_SCRIPT_ID
+  
+  const url = PAYMENT_SHEET_URL + '?' + new URLSearchParams({
+    name: name,
+    email: email,
+    phone: phone,
+    amount: '599900',
+    date: new Date().toLocaleString('en-IN'),
+    type: 'payment'
+  });
+
+  fetch(url, { method: 'GET', mode: 'no-cors' })
+    .catch(err => console.log('Data sent to sheet'));
+}
+
+function showPaymentError(message, code) {
+  alert(message);
+}
+
+function openContactForm() {
+  closePaymentModal();
+  document.querySelector('a[href="#contact"]').click();
+  document.getElementById('name').focus();
+}
+// ===== SCROLL TO SECTION FUNCTION =====
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+</body>
+</html>
